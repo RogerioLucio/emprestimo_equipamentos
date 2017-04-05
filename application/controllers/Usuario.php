@@ -32,6 +32,7 @@ class Usuario extends CI_Controller {
 		$this->load->view('home');
 	}
 
+
 	/**
 	* Recebe o post e faz a validação e redireciona para a página caso o usuário não se logou com sucesso
 	*/
@@ -42,22 +43,23 @@ class Usuario extends CI_Controller {
 		$this->form_validation->set_rules('senha','Senha','required');
 		if($this->form_validation->run() == TRUE){
 			$resultado = $this->usuariomodel->login();
-			$this->session->set_userdata('userData', $dado);
 			if($resultado == null){
 				echo "ERRO";
 			}else{
-				redirect('usuario/bem_vindo');
+				$this->load->library('session');
+				$this->session->set_userdata('userData', $resultado);
+				//echo $this->session->userData[0]->nome_usuario;
+				//exit;
+				//echo $this->session->userData;
+				redirect('usuario/home');
 			}
 		}else{
 			echo validation_errors();
 		}
-
-
 	}
 
 	public function cadastro_model(){
 		$this->load->model('UsuarioModel','usuariomodel');
-		//print_r($_POST);exit();
 		$this->form_validation->set_rules('prontuario','Prontuario','required');
 		$this->form_validation->set_rules('senha','Senha','required');
 		if($this->form_validation->run() == TRUE){
@@ -67,21 +69,26 @@ class Usuario extends CI_Controller {
 			}else{
 				redirect('usuario');
 			}
-
-
+			
+			
 		}else{
 			echo validation_errors();
 		}
 	}
 
 	public function cadastro(){
-		if($this->session->userData->tipo_usuario == 'administrador'){
+		//print_r($_SESSION) ;exit;
+		$this->load->library('session');
+		if($this->session->userData[0]->tipo_usuario == 'administrador'){
 			$this->load->model('UsuarioModel','usuariomodel');
 			$data['cargo'] = $this->usuariomodel->getCargo();
 			$data['setor'] = $this->usuariomodel->getSetor();
 			$this->load->view('common/header');
+			$this->load->view('common/nav');
 			$this->load->view('usuario/cadastro',$data);
-			redirect(base_url($this->empresa.'/usuarios/index'));
+
+		}else{
+			redirect(base_url('/index.php/usuario/index'));
 		}
 
 	}

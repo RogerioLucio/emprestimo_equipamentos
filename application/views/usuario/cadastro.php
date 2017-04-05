@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<body style="background-color: #00420c;">
+<body style="">
 
 <div class="container">
 	
@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			TESTE
 		</div>
 		
-	<div class="pagina">					
+	<div class="pagina" style="border-radius: 10px;">					
 		
 			<div class="div_cadastro">
 				<form action='<?php echo base_url('usuario/cadastro_model');?>' method="POST">

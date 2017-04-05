@@ -52,3 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Usuario';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+$route['equipamento_cadastro'] = 'EquipamentoController/viewCadastro';
+$route['equipamento/cadastro'] = 'EquipamentoController/cadastro';
+$route['equipamento/sucesso']  = 'EquipamentoController/sucesso';

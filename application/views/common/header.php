@@ -1,3 +1,6 @@
+<?php
+$this->load->library('session');
+?>
 <!DOCTYPE html>
 		<html lang="portugues">
 			<head>
@@ -7,8 +10,17 @@
 				<meta name="description" content="">
 				<meta name="author" content="">
 				<title><?php echo $this->lang->line('system_system_name'); ?></title>	
+				<?php
+				
+				if(isset($_SESSION['userData'])){
+				?>
 				<link href="<?php echo base_url('assets/css/sb-admin.css'); ?>"	rel="stylesheet">
+				<?php	
+				}
+				?>
+
 				<link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>"	rel="stylesheet">
+				
 				<link href="<?php echo base_url ( 'assets/font-awesome/css/font-awesome.min.css' );?>"	rel="stylesheet">
 				<link href="<?php echo base_url ( 'assets/css/style.css' );?>"	rel="stylesheet">
 				<script src="<?php echo base_url('assets/js/jquery.min.js');?>"></script>   
