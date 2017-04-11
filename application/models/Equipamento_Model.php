@@ -20,15 +20,34 @@ class Equipamento_Model extends CI_Model{
 
 	}
 
-	function update(){
-		$data = array(
-			'status_equipamento' => $this->input->post('status_equipamento')
-			);
+	function select(){
+		$patrimonio = $this->input->post('num_patrimonio');
+		$query = $this->db->get_where('equipamento', array('patrimonio_equipamento' => $patrimonio), 1);
+		$equipamento = null; 
+		foreach ($query->result() as $row) {
+			$equipamento = $row;
+		}
+		return $equipamento;
+				
+	}
 
-		$retorno = $this->db->replace('equipamento' , $data);
+	function update(){
+		$data = $this->input->post('Campos');
+
+		$equipamento = array(
+			array(
+				'patrimonio_equipamento' => $data['patrimonio_equipamento'],
+				'status_equipamento' => $data['status_equipamento'],
+				'id_categoria' => $data['id_categoria']
+
+				)
+			);	
+				
+		$retorno = $this->db->update_batch('equipamento', $equipamento, 'patrimonio_equipamento');
 		return $retorno;
 
 	}
+
 
 	function delete(){
 		$patrimonio = $this->input->post('patrimonio');

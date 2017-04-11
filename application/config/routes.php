@@ -57,3 +57,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['equipamento_cadastro'] = 'EquipamentoController/viewCadastro';
 $route['equipamento/cadastro'] = 'EquipamentoController/cadastro';
 $route['equipamento/sucesso']  = 'EquipamentoController/sucesso';
+$route['equipamento/atualiza'] = 'EquipamentoController/atualiza';
+$route['equipamento/select']   = 'EquipamentoController/select';
+$route['categoria/getCategorias'] = 'Categoria_Controller/getCategorias';
+$route['categoria/getById']		  = 'Categoria_Controller/getById';

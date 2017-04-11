@@ -9,6 +9,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
+<!--                 <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('equipamento/viewCadastro')?>"><i class="fa fa-fw fa-plus-square"></i> Equipamentos</a>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fa fa-fw fa-area-chart"></i> Graphs</a>
                 </li>
@@ -16,7 +19,7 @@
                     <a class="nav-link" href="#"><i class="fa fa-fw fa-cogs"></i> Widgets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-fw fa-table"></i> Relatórios</a>
+                    <a class="nav-link" href="#"><i class="fa fa-fw fa-table"></i> Tables</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExample"><i class="fa fa-fw fa-sitemap"></i> Menu Levels</a>
@@ -43,7 +46,13 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle mr-lg-2" href="#" id="messagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link mr-lg-2" href="<?php echo base_url('equipamento/viewCadastro')?>">
+                    <i class="fa fa-fw fa-plus-square"></i> <span class="hidden-lg-up">Equipamentos</span>
+                    <span class="new-indicator text-success hidden-md-down"><i class="fa fa-fw fa-circle"></i><span class="number">1</span></span>
+                    </a>
+                </li>            
+                <li class="nav-item dropdown">
+                    <a class="nav-link mr-lg-2" href="#" id="messagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-fw fa-envelope"></i> <span class="hidden-lg-up">Messages <span class="badge badge-pill badge-primary">12 New</span></span>
                         <span class="new-indicator text-primary hidden-md-down"><i class="fa fa-fw fa-circle"></i><span class="number">12</span></span>
                     </a>
@@ -82,11 +91,11 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                    <form class="form-inline my-2 my-lg-0 mr-lg-2" action="<?php echo base_url('equipamento/select')?>" method="POST">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
+                            <input type="text" class="form-control" placeholder="Digite o patrimônio" name="num_patrimonio">
                             <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                        <input class="btn btn-primary" type="submit"><i class="fa fa-search"></i></input>
                     </span>
                         </div>
                     </form>

@@ -35,7 +35,7 @@ class EquipamentoController extends CI_Controller {
 			if($resultado == null){
 				echo "ERRO";
 			}else{
-				redirect('equipamento/sucesso');
+				redirect('equipamento/viewCadastro');
 			}
 		}else{
 			echo validation_errors();
@@ -44,8 +44,32 @@ class EquipamentoController extends CI_Controller {
 		
 	}
 
+	public function atualiza(){
+		$this->load->model('Equipamento_Model');
+
+			$resultado = $this->Equipamento_Model->update();
+			if($resultado == 0){
+				$mensagem = 'Ocorreu um erro.';
+			}else{
+				$mensagem = 'Atualizado com sucesso!';
+			}		
+
+		$mensagem = json_encode($mensagem);
+		
+			echo $mensagem;
+	}
+
+	public function select(){
+		$this->load->model('Equipamento_Model');
+		$resultado = $this->Equipamento_Model->select(); 
+		$this->load->view('common/header');
+		$this->load->view('common/nav');
+		$this->load->view('equipamento/equipamento_cadastro', $resultado);
+	}
+
 	public function viewCadastro(){
 		$this->load->view('common/header');
+		$this->load->view('common/nav');
 		$this->load->view('equipamento/equipamento_cadastro');
 	}
 
