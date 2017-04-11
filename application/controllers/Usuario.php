@@ -26,10 +26,23 @@ class Usuario extends CI_Controller {
 		$this->load->view('common/header');
 		$this->load->view('usuario/Login');
 	}
+	/**
+	*   Carrega o cabeçalho da home
+	*	Carrega a nav
+	*	Carrega a view da home
+	*	Verifica se o usuário está logado
+	*/
 	public function home(){
-		$this->load->view('common/header');
-		$this->load->view('common/nav');
-		$this->load->view('home');
+		$this->load->library('session');
+		if($this->session->userData[0]->tipo_usuario == 'administrador'){
+			$this->load->view('common/header');
+			$this->load->view('common/nav');
+			$this->load->view('home');
+
+		}else{
+			redirect(base_url('/'));
+		}
+
 	}
 
 
